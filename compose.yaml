@@ -1,0 +1,7 @@
+﻿services:
+  ewearshop:
+    image: ewearshop
+    build:
+      context: .
+      dockerfile: EWearShop/Dockerfile
+

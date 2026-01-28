@@ -3,4 +3,6 @@
     <File Path="compose.yaml" />
   </Folder>
   <Project Path="EWearShop.Api\EWearShop.Api.csproj" />
+  <Project Path="EWearShop.DAL/EWearShop.DAL.csproj" />
+  <Project Path="EWearShop.Domain/EWearShop.Domain.csproj" />
 </Solution>

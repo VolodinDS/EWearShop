@@ -17,42 +17,14 @@ public sealed class Product
 
     public static Product Create(string name, string description, ProductCategory category, decimal price, string currency, string imageUrl)
     {
-        // Validation logic
-        // 1. Name should not be empty
-        if (string.IsNullOrWhiteSpace(name))
-        {
-            throw ProductException.EmptyName();
-        }
-
-        // 2. Price should not be negative
-        if (price < 0)
-        {
-            throw ProductException.NegativePrice();
-        }
-
-        // 3. Currency should be a valid ISO 4217 code (basic check)
-        if (string.IsNullOrWhiteSpace(currency) || currency.Length != 3)
-        {
-            throw ProductException.InvalidCurrency();
-        }
-
-        // 4. ImageUrl should be a valid URL
-        if (!Uri.IsWellFormedUriString(imageUrl, UriKind.RelativeOrAbsolute))
-        {
-            throw ProductException.InvalidImageUrl();
-        }
-
-        // 5. Description length check (e.g., max 1000 characters)
-        if (description.Length > 1000)
-        {
-            throw ProductException.DescriptionTooLong();
-        }
-
-        // 6. Category validation (assuming all enum values are valid, otherwise implement specific checks)
-        if (!Enum.IsDefined(category))
-        {
-            throw ProductException.InvalidCategory();
-        }
+        ProductException.ThrowIfEmptyName(name);
+        ProductException.ThrowIfNameTooLong(name);
+        ProductException.ThrowIfDescriptionTooLong(description);
+        ProductException.ThrowIfInvalidCategory(category);
+        ProductException.ThrowIfInvalidImageUrl(imageUrl);
+        ProductException.ThrowIfImageUrlTooLong(imageUrl);
+        ProductException.ThrowIfNegativePrice(price);
+        ProductException.ThrowIfInvalidCurrency(currency);
 
         return new Product
         {

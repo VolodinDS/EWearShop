@@ -1,4 +1,6 @@
-﻿namespace EWearShop.Domain.Products;
+﻿using EWearShop.Domain.Orders;
+
+namespace EWearShop.Domain.Products;
 
 public sealed class Product
 {
@@ -11,6 +13,9 @@ public sealed class Product
     public string ImageUrl { get; set; } = null!;
     public DateTimeOffset CreatedAt { get; init; }
     public DateTimeOffset UpdatedAt { get; set; }
+
+    public IList<OrderItem> OrderItems { get; init; } = [];
+    public IList<Order> Orders { get; init; } = [];
 
     // Private constructor for ORM or serialization purposes
     private Product() { }

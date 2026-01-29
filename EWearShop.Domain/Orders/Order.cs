@@ -1,3 +1,5 @@
+using EWearShop.Domain.Products;
+
 namespace EWearShop.Domain.Orders;
 
 public sealed class Order
@@ -7,6 +9,7 @@ public sealed class Order
     public OrderCustomer CustomerInfo { get; init; } = null!;
 
     public IList<OrderItem> Items { get; init; } = [];
+    public IList<Product> Products { get; init; } = [];
 
     // Private constructor for ORM or serialization purposes
     private Order() { }
@@ -16,6 +19,8 @@ public sealed class Order
         OrderCustomer customerInfo,
         IList<OrderItem> items)
     {
+        OrderException.ThrowIfNoItems(items);
+
         return new Order
         {
             Id = Guid.NewGuid(),

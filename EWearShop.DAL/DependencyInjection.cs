@@ -17,6 +17,7 @@ public static class DependencyInjection
                 string dbPath = Path.Combine(Constants.DatabaseFolder, Constants.DatabaseFileName);
                 builder.UseSqlite($"Data Source={dbPath}");
             });
+            services.AddScoped<IEWearShopDbContext, EWearShopDbContext>();
 
             return services;
         }

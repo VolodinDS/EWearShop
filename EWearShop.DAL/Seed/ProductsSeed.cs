@@ -2,9 +2,9 @@ using EWearShop.Domain.Products;
 
 namespace EWearShop.DAL.Seed;
 
-public static class ProductsSeed
+internal static class ProductsSeed
 {
-    public static void Seed(EWearShopDbContext dbContext, ProductFactory productFactory, TimeProvider timeProvider)
+    internal static void Seed(EWearShopDbContext dbContext, ProductFactory productFactory, TimeProvider timeProvider)
     {
         Dictionary<Guid, Product> existingProducts = dbContext.Products.ToDictionary(k => k.Id);
         Dictionary<Guid, Product> initialProducts = GetInitialProducts(productFactory).ToDictionary(k => k.Id);

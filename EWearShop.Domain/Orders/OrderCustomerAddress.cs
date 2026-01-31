@@ -2,38 +2,12 @@ namespace EWearShop.Domain.Orders;
 
 public sealed class OrderCustomerAddress
 {
-    public string Country { get; init; } = null!;
-    public string City { get; init; } = null!;
+    public required string Country { get; init; }
+    public required string City { get; init; }
     public string? State { get; init; }
-    public string Street { get; init; } = null!;
-    public string ZipCode { get; init; } = null!;
-    public string HouseNumber { get; init; } = null!;
+    public required string Street { get; init; }
+    public required string ZipCode { get; init; }
+    public required string HouseNumber { get; init; }
     public string? ApartmentNumber { get; init; }
     public string? AdditionalInfo { get; init; }
-
-    // Private constructor for ORM or serialization purposes
-    private OrderCustomerAddress() { }
-
-    public static OrderCustomerAddress Create(
-        string country,
-        string city,
-        string? state,
-        string street,
-        string zipCode,
-        string houseNumber,
-        string? apartmentNumber,
-        string? additionalInfo)
-    {
-        return new OrderCustomerAddress
-        {
-            Country = country,
-            City = city,
-            State = state,
-            Street = street,
-            ZipCode = zipCode,
-            HouseNumber = houseNumber,
-            ApartmentNumber = apartmentNumber,
-            AdditionalInfo = additionalInfo
-        };
-    }
 }

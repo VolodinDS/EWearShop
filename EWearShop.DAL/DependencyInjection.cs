@@ -1,3 +1,5 @@
+using EWearShop.DAL.Seed;
+using EWearShop.Domain.Products;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,8 +31,12 @@ public static class DependencyInjection
             using IServiceScope scope = app.ApplicationServices.CreateScope();
 
             var dbContext = scope.ServiceProvider.GetRequiredService<EWearShopDbContext>();
+            var productFactory = scope.ServiceProvider.GetRequiredService<ProductFactory>();
+            var timeProvider = scope.ServiceProvider.GetRequiredService<TimeProvider>();
 
-            dbContext.Database.Migrate();
+            dbContext.Database.EnsureCreated();
+
+            ProductsSeed.Seed(dbContext, productFactory, timeProvider);
 
             return app;
         }

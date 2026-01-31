@@ -1,8 +1,13 @@
+using EWearShop.DAL;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+builder.Services.AddDataAccessLayer();
 
 WebApplication app = builder.Build();
+
+app.UseDataAccessLayer();
 
 if (app.Environment.IsDevelopment())
 {
@@ -11,4 +16,4 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.Run();
+await app.RunAsync();

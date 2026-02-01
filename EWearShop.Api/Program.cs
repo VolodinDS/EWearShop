@@ -1,3 +1,5 @@
+using EWearShop.Api.Features.Orders.GetOrdersForAdmin;
+using EWearShop.Api.Features.Products.GetProducts;
 using EWearShop.DAL;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,9 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.MapGetProductsEndpoint();
+app.MapGetOrdersForAdminEndpoint();
 
 app.UseHttpsRedirection();
 

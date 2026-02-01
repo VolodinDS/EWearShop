@@ -5,6 +5,7 @@ public sealed class ProductFactory(TimeProvider timeProvider)
     private readonly TimeProvider _timeProvider = timeProvider;
 
     public Product Create(
+        Guid id,
         string name,
         string description,
         ProductCategory category,
@@ -23,7 +24,7 @@ public sealed class ProductFactory(TimeProvider timeProvider)
 
         return new Product
         {
-            Id = Guid.CreateVersion7(),
+            Id = id,
             Name = name,
             Description = description,
             Category = category,

@@ -16,6 +16,8 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseStaticFiles();
+
 app.MapGetProductsEndpoint();
 app.MapGetOrdersForAdminEndpoint();
 

@@ -18,6 +18,8 @@ public static class DependencyInjection
                 builder.UseSqlite($"Data Source={dbPath}");
             });
             services.AddScoped<IEWearShopDbContext, EWearShopDbContext>();
+            services.AddSingleton(TimeProvider.System);
+            services.AddSingleton<ProductFactory>(provider => new ProductFactory(provider.GetRequiredService<TimeProvider>()));
 
             return services;
         }

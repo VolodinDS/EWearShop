@@ -35,7 +35,7 @@ public static class DependencyInjection
             var productFactory = scope.ServiceProvider.GetRequiredService<ProductFactory>();
             var timeProvider = scope.ServiceProvider.GetRequiredService<TimeProvider>();
 
-            dbContext.Database.EnsureCreated();
+            dbContext.Database.Migrate();
 
             ProductsSeed.Seed(dbContext, productFactory, timeProvider);
 

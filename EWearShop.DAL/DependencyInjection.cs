@@ -1,4 +1,5 @@
 using EWearShop.DAL.Seed;
+using EWearShop.Domain.Orders;
 using EWearShop.Domain.Products;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,7 @@ public static class DependencyInjection
             services.AddScoped<IEWearShopDbContext, EWearShopDbContext>();
             services.AddSingleton(TimeProvider.System);
             services.AddSingleton<ProductFactory>(provider => new ProductFactory(provider.GetRequiredService<TimeProvider>()));
+            services.AddSingleton<OrderFactory>(provider => new OrderFactory(provider.GetRequiredService<TimeProvider>()));
 
             return services;
         }

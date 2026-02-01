@@ -1,3 +1,4 @@
+using EWearShop.Api.Features.Orders.CreateOrder;
 using EWearShop.Api.Features.Orders.GetOrdersForAdmin;
 using EWearShop.Api.Features.Products.GetProducts;
 using EWearShop.DAL;
@@ -20,6 +21,7 @@ app.UseStaticFiles();
 
 app.MapGetProductsEndpoint();
 app.MapGetOrdersForAdminEndpoint();
+app.MapCreateOrderEndpoint();
 
 app.UseHttpsRedirection();
 

@@ -42,7 +42,11 @@ internal static class ProductsSeed
 
         if (productsToUpdate.Count > 0)
         {
-            dbContext.Products.UpdateRange(productsToUpdate);
+            foreach (Product product in productsToUpdate)
+            {
+                product.UpdatedAt = timeProvider.GetUtcNow();
+                dbContext.Products.Update(product);
+            }
         }
 
         dbContext.SaveChanges();

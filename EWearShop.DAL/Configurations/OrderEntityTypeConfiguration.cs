@@ -16,7 +16,6 @@ public sealed class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Orde
             customerInfoBuilder.Property(x => x.LastName).IsRequired();
             customerInfoBuilder.Property(x => x.Email).IsRequired();
             customerInfoBuilder.Property(x => x.PhoneNumber).IsRequired(false);
-            customerInfoBuilder.Property(x => x.Address).IsRequired();
             customerInfoBuilder.OwnsOne(x => x.Address, addressBuilder =>
             {
                 addressBuilder.Property(x => x.Country).IsRequired();

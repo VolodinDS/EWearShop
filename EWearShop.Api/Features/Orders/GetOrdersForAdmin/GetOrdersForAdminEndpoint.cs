@@ -12,7 +12,7 @@ internal static class GetOrdersForAdminEndpoint
     {
         public IEndpointRouteBuilder MapGetOrdersForAdminEndpoint()
         {
-            endpoints.MapGet("/api/admin/orders/products", Handle)
+            endpoints.MapGet("/api/admin/orders", Handle)
                 .WithTags("Orders")
                 .WithName("GetOrdersForAdmin")
                 .WithDescription("Gets all orders for admin purposes.");
@@ -24,6 +24,7 @@ internal static class GetOrdersForAdminEndpoint
     private static async Task<GetOrdersForAdminResult> Handle(IEWearShopDbContext dbContext, CancellationToken cancellationToken)
     {
         GetOrdersForAdminResponseItem[] orders = await dbContext.Orders
+            .AsNoTracking()
             .Select(order => new GetOrdersForAdminResponseItem
             {
                 Id = order.Id,

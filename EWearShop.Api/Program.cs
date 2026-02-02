@@ -7,10 +7,13 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 builder.Services.AddDataAccessLayer();
+builder.Services.AddCors();
 
 WebApplication app = builder.Build();
 
 app.UseDataAccessLayer();
+
+app.UseCors();
 
 if (app.Environment.IsDevelopment())
 {

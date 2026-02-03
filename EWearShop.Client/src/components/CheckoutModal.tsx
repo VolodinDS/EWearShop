@@ -26,7 +26,7 @@ interface CheckoutFormData {
 }
 
 export const CheckoutModal: FC<{ isOpen: boolean, onOpenChange: (open: boolean) => void }> = ({ isOpen, onOpenChange }) => {
-    const { items, clearCart } = useCartStore()
+    const { items, clearCart, removeFromCart } = useCartStore()
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<CheckoutFormData>()
 
     const groupedItems = useMemo(() => items.reduce((acc, item) => {
@@ -82,34 +82,48 @@ export const CheckoutModal: FC<{ isOpen: boolean, onOpenChange: (open: boolean) 
                     </div>
 
                     <section className="mb-12">
-                        <div className="space-y-4">
+                        <div className="space-y-6">
                             {groupedItems.map(item => (
-                                <div key={item.id} className="flex gap-4 border-b border-gray-50 pb-4">
+                                <div key={item.id} className="group flex gap-4 border-b border-gray-50 pb-6 relative">
+                                    <button
+                                        onClick={() => removeFromCart(item.id)}
+                                        className="absolute -right-2 top-0 p-2 text-gray-300 hover:text-black transition-colors"
+                                        title="Remove item"
+                                    >
+                                        <X size={14} strokeWidth={1.5} />
+                                    </button>
+
                                     <img
                                         src={getFullImageUrl(item.imageUrl)}
-                                        className="w-16 h-16 object-cover bg-gray-50"
+                                        className="w-20 h-20 object-cover bg-gray-50 grayscale-[0.2] hover:grayscale-0 transition-all"
                                         alt={item.name}
                                     />
-                                    <div className="flex-1 flex flex-col justify-between">
-                                        <div className="flex justify-between items-start">
-                                            <h4 className="text-[10px] uppercase tracking-wider font-medium">{item.name}</h4>
-                                            <span className="text-[10px] font-semibold">
-                                                {item.price}
-                                                {" "}
-                                                {item.currency}
-                                            </span>
-                                        </div>
-                                        <div className="flex justify-between items-end">
-                                            <span className="text-[9px] text-gray-400 uppercase tracking-tighter">
-                                                Qty:
-                                                {item.quantity}
-                                            </span>
-                                            <span className="text-[10px] text-gray-400">
-                                                Subtotal:
+
+                                    <div className="flex-1 flex flex-col">
+                                        <div className="flex justify-between items-start pr-6">
+                                            <h4 className="text-[10px] uppercase tracking-[0.15em] font-medium leading-tight w-2/3">
+                                                {item.name}
+                                            </h4>
+                                            <span className="text-[11px] font-semibold italic">
                                                 {item.price * item.quantity}
                                                 {" "}
                                                 {item.currency}
                                             </span>
+                                        </div>
+
+                                        <div className="mt-auto flex justify-between items-end">
+                                            <div className="flex flex-col gap-1">
+                                                <span className="text-[9px] text-gray-400 uppercase tracking-tighter">
+                                                    Unit Price:
+                                                    {" "}
+                                                    {item.price}
+                                                </span>
+                                                <span className="text-[9px] uppercase font-bold tracking-widest bg-gray-100 px-1.5 py-0.5 w-fit">
+                                                    QTY:
+                                                    {" "}
+                                                    {item.quantity}
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

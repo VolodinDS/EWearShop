@@ -7,7 +7,14 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 builder.Services.AddDataAccessLayer();
-builder.Services.AddCors();
+builder.Services.AddCors(options => options.AddDefaultPolicy(policyBuilder =>
+{
+    string[] allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
+
+    policyBuilder.WithOrigins(allowedOrigins)
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+}));
 
 WebApplication app = builder.Build();
 

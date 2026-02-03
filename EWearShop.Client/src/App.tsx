@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import BottomNav from "@/components/BottomNav.tsx"
 import CatalogPage from "@/pages/CatalogPage.tsx"
+import ManagementPage from "@/pages/ManagementPage.tsx"
 import { useCartStore } from "@/store/useCartStore.ts"
 import "./App.css"
 
@@ -13,7 +14,7 @@ function App() {
                 <main className="grow container mx-auto">
                     <Routes>
                         <Route path="/" element={<CatalogPage />} />
-                        <Route path="/management" element={<div className="p-10 text-center">Admin Zone</div>} />
+                        <Route path="/management" element={<ManagementPage />} />
                     </Routes>
                 </main>
                 <BottomNav cartItemsCount={cartItemsCount} />

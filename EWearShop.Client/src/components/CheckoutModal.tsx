@@ -4,6 +4,7 @@ import * as Dialog from "@radix-ui/react-dialog"
 import { X } from "lucide-react"
 import { useCallback, useMemo } from "react"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 import api from "@/api/api-client.ts"
 import { getFullImageUrl } from "@/utils/getFullImageUrl.ts"
 import { useCartStore } from "../store/useCartStore"
@@ -44,28 +45,27 @@ export const CheckoutModal: FC<{ isOpen: boolean, onOpenChange: (open: boolean) 
 
     const onSubmit = useCallback(async (data: CheckoutFormData) => {
         const request = {
-            customerInfo: {
-                firstName: data.firstName,
-                lastName: data.lastName,
-                fatherName: data.fatherName,
-                email: data.email,
-                phoneNumber: data.phoneNumber,
-                address: data.address,
-            },
+            customerInfo: { ...data },
             items: groupedItems.map(item => ({
                 productId: item.id,
                 quantity: item.quantity,
             })),
         }
 
-        try {
-            await api.post("/api/orders", request)
-            clearCart()
-            onOpenChange(false)
-        }
-        catch (error) {
-            console.error("Order submission failed", error)
-        }
+        const orderPromise = api.post("/api/orders", request)
+
+        toast.promise(orderPromise, {
+            loading: "Processing your order...",
+            success: () => {
+                clearCart()
+                onOpenChange(false)
+                return "Order accepted. Thank you."
+            },
+            error: (err) => {
+                console.error(err)
+                return "Failed to place order. Please try again."
+            },
+        })
     }, [groupedItems])
 
     return (

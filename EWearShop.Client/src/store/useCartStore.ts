@@ -6,6 +6,7 @@ interface CartState {
     items: Product[]
     addToCart: (product: Product) => void
     totalCount: () => number
+    clearCart: () => void
 }
 
 export const useCartStore = create<CartState>()(
@@ -14,6 +15,7 @@ export const useCartStore = create<CartState>()(
             items: [],
             addToCart: product => set(state => ({ items: [...state.items, product] })),
             totalCount: () => get().items.length,
+            clearCart: () => set({ items: [] }),
         }),
         { name: "ewear-cart" },
     ),

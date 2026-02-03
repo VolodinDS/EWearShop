@@ -1,12 +1,16 @@
 import type { FC } from "react"
 import { Menu, ShoppingBag, UserRound } from "lucide-react"
+import { useState } from "react"
 import { NavLink } from "react-router-dom"
+import { CheckoutModal } from "@/components/CheckoutModal.tsx"
 
 interface BottomNavProps {
     cartItemsCount: number
 }
 
 const BottomNav: FC<BottomNavProps> = ({ cartItemsCount }) => {
+    const [isCheckoutOpen, setIsCheckoutOpen] = useState(false)
+
     const linkStyles = ({ isActive }: { isActive: boolean }) =>
         `flex flex-col items-center gap-1 transition-colors ${
             isActive ? "text-black" : "text-gray-400 hover:text-gray-600"
@@ -21,7 +25,7 @@ const BottomNav: FC<BottomNavProps> = ({ cartItemsCount }) => {
                     <span className="text-[10px] uppercase tracking-widest font-medium">Catalog</span>
                 </NavLink>
 
-                <button className="relative flex flex-col items-center gap-1 text-gray-500 hover:text-black transition-colors">
+                <button className="relative flex flex-col items-center gap-1 text-gray-500 hover:text-black transition-colors" onClick={() => setIsCheckoutOpen(true)}>
                     <ShoppingBag size={20} strokeWidth={1.5} />
                     {cartItemsCount > 0 && (
                         <span className="absolute -top-1 -right-1 bg-black text-white text-[8px] w-4 h-4 rounded-full flex items-center justify-center">
@@ -30,6 +34,7 @@ const BottomNav: FC<BottomNavProps> = ({ cartItemsCount }) => {
                     )}
                     <span className="text-[10px] uppercase tracking-widest">Shopping Cart</span>
                 </button>
+                <CheckoutModal isOpen={isCheckoutOpen} onOpenChange={setIsCheckoutOpen} />
 
                 <NavLink to="/management" className={linkStyles}>
                     <UserRound size={20} strokeWidth={1.5} />

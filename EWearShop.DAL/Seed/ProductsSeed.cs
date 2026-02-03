@@ -188,101 +188,7 @@ internal static class ProductsSeed
             "RUB",
             "/images/products/shorts-chino.png"),
 
-        // Dresses
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-7694-A164-79956C6D8B42"u8),
-            "Summer Floral Dress",
-            "Breezy cotton dress with floral print",
-            ProductCategory.Dresses,
-            3299,
-            "RUB",
-            "/images/products/dress-summer.png"),
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-76A3-B623-8FDC3DBA8C69"u8),
-            "Wrap Midi Dress",
-            "Elegant wrap dress with adjustable waist",
-            ProductCategory.Dresses,
-            3699,
-            "RUB",
-            "/images/products/dress-wrap.png"),
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-76A8-BF96-A2F1A75D5330"u8),
-            "Knit Bodycon Dress",
-            "Soft knit dress with bodycon fit",
-            ProductCategory.Dresses,
-            3499,
-            "RUB",
-            "/images/products/dress-knit.png"),
-
-        // Skirts
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-76D8-9C5C-B49349F08A65"u8),
-            "Silk Midi Skirt",
-            "Smooth silk skirt with gentle sheen",
-            ProductCategory.Skirts,
-            2899,
-            "RUB",
-            "/images/products/skirt-midi.png"),
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-7716-865E-3619DDA044EE"u8),
-            "Pleated Chiffon Skirt",
-            "Flowy pleated skirt with elastic waistband",
-            ProductCategory.Skirts,
-            2699,
-            "RUB",
-            "/images/products/skirt-pleated.png"),
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-778C-9EEE-083EBD2D1172"u8),
-            "Denim Mini Skirt",
-            "Classic denim mini skirt with front buttons",
-            ProductCategory.Skirts,
-            2399,
-            "RUB",
-            "/images/products/skirt-denim.png"),
-
-        // Swimwear
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-78BD-A66E-F508AD7BC9C4"u8),
-            "One-Piece Swimsuit",
-            "Sleek one-piece with supportive fit",
-            ProductCategory.Swimwear,
-            2499,
-            "RUB",
-            "/images/products/swimwear-onepiece.png"),
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-78C9-B565-5A668208CDE4"u8),
-            "Bikini Swim Set",
-            "Two-piece bikini with adjustable straps",
-            ProductCategory.Swimwear,
-            2299,
-            "RUB",
-            "/images/products/swimwear-bikini.png"),
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-7A38-8271-22575508C5B0"u8),
-            "High-Waist Swim Bottoms",
-            "High-rise bottoms with smooth finish",
-            ProductCategory.Swimwear,
-            1999,
-            "RUB",
-            "/images/products/swimwear-highwaist.png"),
-
         // Activewear
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-7AAF-A170-F15B019F1FDE"u8),
-            "Yoga Leggings",
-            "Stretch leggings with high-rise waistband",
-            ProductCategory.Activewear,
-            2199,
-            "RUB",
-            "/images/products/activewear-leggings.png"),
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-7ADB-A6D7-36C04C29F170"u8),
-            "Training Sports Bra",
-            "Medium support sports bra for gym sessions",
-            ProductCategory.Activewear,
-            1999,
-            "RUB",
-            "/images/products/activewear-bra.png"),
         productFactory.Create(
             Guid.Parse("019C1A1A-8626-7B6A-A2D1-A5293A15CD3F"u8),
             "Running Performance Shorts",
@@ -301,22 +207,6 @@ internal static class ProductsSeed
             1599,
             "RUB",
             "/images/products/underwear-set.png"),
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-7D01-8606-675AB0211827"u8),
-            "Seamless Briefs",
-            "No-show briefs with smooth bonded edges",
-            ProductCategory.Underwear,
-            1299,
-            "RUB",
-            "/images/products/underwear-briefs.png"),
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-7D80-B409-CF555B7DF30C"u8),
-            "Lace Bralette",
-            "Lightweight bralette with delicate lace",
-            ProductCategory.Underwear,
-            1499,
-            "RUB",
-            "/images/products/underwear-bralette.png"),
 
         // Sleepwear
         productFactory.Create(
@@ -327,14 +217,6 @@ internal static class ProductsSeed
             2299,
             "RUB",
             "/images/products/sleepwear-pajama.png"),
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-7E52-A131-32B805252ADD"u8),
-            "Satin Nightgown",
-            "Smooth satin nightgown with adjustable straps",
-            ProductCategory.Sleepwear,
-            2599,
-            "RUB",
-            "/images/products/sleepwear-nightgown.png"),
         productFactory.Create(
             Guid.Parse("019C1A1A-8626-7ED9-8AB3-5AC517862CAE"u8),
             "Cozy Lounge Robe",
@@ -353,14 +235,6 @@ internal static class ProductsSeed
             1899,
             "RUB",
             "/images/products/accessories-belt.png"),
-        productFactory.Create(
-            Guid.Parse("019C1A1A-8626-7F2D-94D7-1D7B16FA20F4"u8),
-            "Canvas Tote Bag",
-            "Roomy tote bag for everyday essentials",
-            ProductCategory.Accessories,
-            1699,
-            "RUB",
-            "/images/products/accessories-tote.png"),
         productFactory.Create(
             Guid.Parse("019C1A1A-8626-7F4D-AD3E-F95B1224E27A"u8),
             "Wool Knit Beanie",

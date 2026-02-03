@@ -15,7 +15,10 @@ internal static class GetOrdersForAdminEndpoint
             endpoints.MapGet("/api/admin/orders", Handle)
                 .WithTags("Orders")
                 .WithName("GetOrdersForAdmin")
-                .WithDescription("Gets all orders for admin purposes.");
+                .WithDescription("Gets all orders for admin purposes.")
+                .RequireAuthorization(builder => builder
+                    .AddAuthenticationSchemes("AdminSecretKeyScheme")
+                    .RequireAuthenticatedUser());
 
             return endpoints;
         }

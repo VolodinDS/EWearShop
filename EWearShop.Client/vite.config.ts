@@ -11,6 +11,11 @@ export default defineConfig(({ mode }) => {
         plugins: [react(), tailwindcss()],
         server: {
             proxy: {
+                "/images": {
+                    target: env.VITE_API_TARGET,
+                    changeOrigin: true,
+                    secure: false,
+                },
                 "/api": {
                     target: env.VITE_API_TARGET,
                     changeOrigin: true,

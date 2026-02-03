@@ -7,8 +7,6 @@
     --color-brand-white: #ffffff;
     --color-brand-gray: #f5f5f5;
 
-    --letter-spacing-zara: 0.2em;
-
     --animate-fade-in: fade-in 0.5s ease-out;
 
     @keyframes fade-in {
